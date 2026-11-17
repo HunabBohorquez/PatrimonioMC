@@ -1,0 +1,79 @@
+:root {
+    --bg-dark: #0f172a;
+    --panel-dark: #1e293b;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --accent: #3b82f6;
+    --accent-hover: #2563eb;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --border: #334155;
+    --cons-color: #64748b;
+    --fixed-color: #3b82f6;
+    --growth-color: #10b981;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+
+body { background-color: var(--bg-dark); color: var(--text-main); font-size: 14px; }
+
+.app-container { display: flex; height: 100vh; overflow: hidden; }
+
+/* Sidebar */
+.sidebar { width: 320px; background-color: var(--panel-dark); border-right: 1px solid var(--border); display: flex; flex-direction: column; overflow-y: auto; }
+.sidebar-header { padding: 20px; border-bottom: 1px solid var(--border); }
+.sidebar-header h2 { color: var(--accent); font-size: 1.5rem; }
+.sidebar-header p { color: var(--text-muted); font-size: 0.85rem; }
+
+.presets-container { padding: 15px 20px; display: flex; flex-direction: column; gap: 8px; border-bottom: 1px solid var(--border); }
+.preset-btn { background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 6px; border-radius: 4px; cursor: pointer; transition: all 0.2s; font-size: 0.8rem;}
+.preset-btn:hover { background: var(--accent); color: #fff; }
+
+#params-form { padding: 20px; display: flex; flex-direction: column; gap: 15px; }
+.input-group { display: flex; flex-direction: column; gap: 5px; }
+.input-group label { color: var(--text-muted); font-size: 0.85rem; }
+input[type="number"] { background: var(--bg-dark); border: 1px solid var(--border); color: var(--text-main); padding: 8px; border-radius: 4px; outline: none; }
+input[type="number"]:focus { border-color: var(--accent); }
+.rates-inputs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; }
+
+.primary-btn { background: var(--accent); color: #fff; border: none; padding: 12px; border-radius: 6px; cursor: pointer; font-weight: bold; margin-top: 10px; transition: 0.2s;}
+.primary-btn:hover { background: var(--accent-hover); }
+
+/* Main Content */
+.main-content { flex: 1; display: flex; flex-direction: column; overflow-y: auto; }
+.content-header { display: flex; justify-content: space-between; align-items: center; padding: 20px; border-bottom: 1px solid var(--border); background: var(--panel-dark); }
+.tabs { display: flex; gap: 10px; }
+.tab-btn { background: transparent; color: var(--text-muted); border: none; padding: 8px 16px; cursor: pointer; font-size: 1rem; border-bottom: 2px solid transparent; transition: 0.2s;}
+.tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+.export-actions button { background: var(--bg-dark); border: 1px solid var(--border); color: var(--text-main); padding: 6px 12px; border-radius: 4px; cursor: pointer; }
+
+.tab-pane { display: none; padding: 20px; flex-direction: column; gap: 20px; }
+.tab-pane.active { display: flex; }
+
+/* Cards & Charts */
+.cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+.card { background: var(--panel-dark); border: 1px solid var(--border); padding: 15px; border-radius: 8px; }
+.card h3 { font-size: 1rem; color: var(--text-muted); margin-bottom: 10px;}
+.card .val-nom { font-size: 1.5rem; font-weight: bold; }
+.card .val-real { font-size: 0.9rem; color: var(--text-muted); margin-top: 5px; }
+.card.cons { border-top: 3px solid var(--cons-color); }
+.card.fixed { border-top: 3px solid var(--fixed-color); }
+.card.growth { border-top: 3px solid var(--growth-color); }
+
+.chart-container { background: var(--panel-dark); border: 1px solid var(--border); border-radius: 8px; padding: 15px; height: 350px; position: relative; }
+canvas { width: 100%; height: 100%; }
+
+/* Table */
+.table-container { background: var(--panel-dark); border-radius: 8px; border: 1px solid var(--border); overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; text-align: right; }
+th, td { padding: 12px; border-bottom: 1px solid var(--border); }
+th { color: var(--text-muted); background: rgba(0,0,0,0.2); font-weight: normal; }
+td { font-family: monospace; font-size: 0.95rem; }
+
+/* Monte Carlo Specifics */
+.mc-summary { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.mc-card { background: var(--panel-dark); padding: 20px; border-radius: 8px; text-align: center; border: 1px solid var(--border); }
+.mc-card .prob { font-size: 2.5rem; font-weight: bold; }
+.prob.high { color: var(--success); } .prob.mid { color: var(--warning); } .prob.low { color: var(--danger); }
+.mc-optimization { background: rgba(59, 130, 246, 0.1); border-left: 4px solid var(--accent); padding: 15px; border-radius: 0 8px 8px 0; }
